@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -345,7 +345,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-12 15:19:28 / 修改时间：15:55:56" itemprop="dateCreated datePublished" datetime="2021-03-12T15:19:28+08:00">2021-03-12</time>
+      <time title="创建时间：2021-03-12 15:19:28 / 修改时间：16:54:50" itemprop="dateCreated datePublished" datetime="2021-03-12T15:19:28+08:00">2021-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -370,12 +370,123 @@
           <blockquote>
 <p>centos系统虚拟机的有线网卡突然消失，导致网络无法连接</p>
 </blockquote>
-<h6 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h6><ul>
-<li><p>进入虚拟机，在终端命令<code>systemctl start network.service</code>重启网络服务报以下错误(ens33为有线网卡,不同版本可能不同, 如ens32)</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection &#x27;ens33&#x27; is not available on device ens33 because device is strictly unmanaged</span><br></pre></td></tr></table></figure>
-<h6 id="最佳解决"><a href="#最佳解决" class="headerlink" title="最佳解决"></a>最佳解决</h6></li>
-<li><p>关闭NetworkManager可以起作用，但不推荐，有线网卡消失是因为网卡未加入托管导致，这里重新纳入托管为最佳解决办法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查看托管状态</span><br><span class="line">nmcli n</span><br><span class="line">显示 disabled 则为本文遇到的问题，如果是 enabled 则可以不用往下看了</span><br><span class="line">开启 托管</span><br><span class="line">nmcli n on</span><br><span class="line">重启网络管理</span><br><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure></li>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/12/linux/2021-03-12-centos-network-manager.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/09/21/php/2017-09-21-php-extensions.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kaname Madoka">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Madoka">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/09/21/php/2017-09-21-php-extensions.html" class="post-title-link" itemprop="url">php扩展库安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-09-21 11:34:20" itemprop="dateCreated datePublished" datetime="2017-09-21T11:34:20+08:00">2017-09-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-12 16:55:20" itemprop="dateModified" datetime="2021-03-12T16:55:20+08:00">2021-03-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <a id="more"></a>
+
+<h3 id="windows环境下PHP安装扩展"><a href="#windows环境下PHP安装扩展" class="headerlink" title="windows环境下PHP安装扩展"></a>windows环境下PHP安装扩展</h3><ul>
+<li><p>通过phpinfo()函数，进行查看扩展是否已安装</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据php版本前往官方网址下载对应的扩展库</p>
+<p><a target="_blank" rel="noopener" href="http://pecl.php.net/packages.php">下载地址</a></p>
+<p>windows对应<img src="https://cdn.jsdelivr.net/gh/Madoka-Kaname/Madoka-Kaname.github.io/images/content/windows_dll.png" alt="img">， nts非线程安全，ts线程安全，x64代表64位，x86代表32位</p>
+</li>
+<li><p>将下载的扩展库文件放入对应的扩展库文件夹，修改php.ini, 以下以redis为例</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extension=php_igbinary.dll</span><br><span class="line">extension=php_redis.dll</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="linux-centos-redhat-环境下PHP安装扩展"><a href="#linux-centos-redhat-环境下PHP安装扩展" class="headerlink" title="linux(centos/redhat)环境下PHP安装扩展"></a>linux(centos/redhat)环境下PHP安装扩展</h3><h6 id="方法一-源码安装"><a href="#方法一-源码安装" class="headerlink" title="方法一: 源码安装"></a>方法一: 源码安装</h6><ol>
+<li><p>下载php版本对应的扩展源码包</p>
+<ul>
+<li><p>例如redis</p>
+<p><code>http://pecl.php.net/package/redis</code></p>
+</li>
+</ul>
+</li>
+<li><p>解压进入源码目录</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf redis.tar.gz</span><br><span class="line">   </span><br><span class="line">$ <span class="built_in">cd</span> redis</span><br><span class="line">   </span><br><span class="line">$ /usr/bin/phpize </span><br><span class="line">   </span><br><span class="line">$ ./configure --with-php-config=/usr/bin/php-config</span><br><span class="line">   </span><br><span class="line">$ make &amp;&amp; make install</span><br><span class="line">   </span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;extension=redis.so&quot;</span> &gt;&gt; /etc/php.ini</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="方法二-pecl扩展库安装"><a href="#方法二-pecl扩展库安装" class="headerlink" title="方法二: pecl扩展库安装"></a>方法二: pecl扩展库安装</h6><ul>
+<li><p>终端执行指令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ pecl install -o -f redis </span><br><span class="line">  </span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;extension=redis.so&quot;</span> &gt;&gt; /etc/php.ini</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
 </ul>
 
       

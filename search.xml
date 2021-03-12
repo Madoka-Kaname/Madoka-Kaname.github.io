@@ -20,6 +20,8 @@
     <content><![CDATA[<blockquote>
 <p>centos系统虚拟机的有线网卡突然消失，导致网络无法连接</p>
 </blockquote>
+<a id="more"></a>
+
 <h6 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h6><ul>
 <li><p>进入虚拟机，在终端命令<code>systemctl start network.service</code>重启网络服务报以下错误(ens33为有线网卡,不同版本可能不同, 如ens32)</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Connection &#x27;ens33&#x27; is not available on device ens33 because device is strictly unmanaged</span><br></pre></td></tr></table></figure>
@@ -73,6 +75,49 @@
 </li>
 <li><p>重新加载配置</p>
   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ composer dump-autoload</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php扩展库安装</title>
+    <url>/2017/09/21/php/2017-09-21-php-extensions.html</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="windows环境下PHP安装扩展"><a href="#windows环境下PHP安装扩展" class="headerlink" title="windows环境下PHP安装扩展"></a>windows环境下PHP安装扩展</h3><ul>
+<li><p>通过phpinfo()函数，进行查看扩展是否已安装</p>
+  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">echo</span> phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据php版本前往官方网址下载对应的扩展库</p>
+<p><a href="http://pecl.php.net/packages.php">下载地址</a></p>
+<p>windows对应<img src="https://cdn.jsdelivr.net/gh/Madoka-Kaname/Madoka-Kaname.github.io/images/content/windows_dll.png" alt="img">， nts非线程安全，ts线程安全，x64代表64位，x86代表32位</p>
+</li>
+<li><p>将下载的扩展库文件放入对应的扩展库文件夹，修改php.ini, 以下以redis为例</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">extension=php_igbinary.dll</span><br><span class="line">extension=php_redis.dll</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="linux-centos-redhat-环境下PHP安装扩展"><a href="#linux-centos-redhat-环境下PHP安装扩展" class="headerlink" title="linux(centos/redhat)环境下PHP安装扩展"></a>linux(centos/redhat)环境下PHP安装扩展</h3><h6 id="方法一-源码安装"><a href="#方法一-源码安装" class="headerlink" title="方法一: 源码安装"></a>方法一: 源码安装</h6><ol>
+<li><p>下载php版本对应的扩展源码包</p>
+<ul>
+<li><p>例如redis</p>
+<p><code>http://pecl.php.net/package/redis</code></p>
+</li>
+</ul>
+</li>
+<li><p>解压进入源码目录</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tar -zxvf redis.tar.gz</span><br><span class="line">   </span><br><span class="line">$ <span class="built_in">cd</span> redis</span><br><span class="line">   </span><br><span class="line">$ /usr/bin/phpize </span><br><span class="line">   </span><br><span class="line">$ ./configure --with-php-config=/usr/bin/php-config</span><br><span class="line">   </span><br><span class="line">$ make &amp;&amp; make install</span><br><span class="line">   </span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;extension=redis.so&quot;</span> &gt;&gt; /etc/php.ini</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="方法二-pecl扩展库安装"><a href="#方法二-pecl扩展库安装" class="headerlink" title="方法二: pecl扩展库安装"></a>方法二: pecl扩展库安装</h6><ul>
+<li><p>终端执行指令</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pecl install -o -f redis </span><br><span class="line">  </span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;extension=redis.so&quot;</span> &gt;&gt; /etc/php.ini</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
