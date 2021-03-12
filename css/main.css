@@ -2875,6 +2875,7 @@ mark.search-keyword {
 body {
   background: url("https://cdn.jsdelivr.net/gh/Madoka-Kaname/Madoka-Kaname.github.io/images/background.jpg");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -2886,8 +2887,8 @@ body {
 }
 .header-inner {
   background: rgba(255,255,255,0.9);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .main-inner {
-  opacity: 0.8;
+  opacity: 0.9;
 }
