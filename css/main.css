@@ -2886,8 +2886,8 @@ body {
   opacity: 0.9;
 }
 .header-inner {
-  background: rgba(255,255,255,0.9);
-  opacity: 0.9;
+  background: #fff;
+  opacity: 1;
 }
 .main-inner {
   opacity: 0.9;
