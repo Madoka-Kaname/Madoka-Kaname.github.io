@@ -95,7 +95,7 @@
 </li>
 <li><p>根据php版本前往官方网址下载对应的扩展库</p>
 <p><a href="http://pecl.php.net/packages.php">下载地址</a></p>
-<p>windows对应<img src="https://cdn.jsdelivr.net/gh/Madoka-Kaname/Madoka-Kaname.github.io/images/content/windows_dll.png" alt="img">， nts非线程安全，ts线程安全，x64代表64位，x86代表32位</p>
+<p>windows对应<code>dll</code>， nts非线程安全，ts线程安全，x64代表64位，x86代表32位。</p>
 </li>
 <li><p>将下载的扩展库文件放入对应的扩展库文件夹，修改php.ini, 以下以redis为例</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">extension=php_igbinary.dll</span><br><span class="line">extension=php_redis.dll</span><br></pre></td></tr></table></figure>
