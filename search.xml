@@ -25,7 +25,10 @@
 <h6 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h6><ul>
 <li><p>进入虚拟机，在终端命令<code>systemctl start network.service</code>重启网络服务报以下错误(ens33为有线网卡,不同版本可能不同, 如ens32)</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Connection &#x27;ens33&#x27; is not available on device ens33 because device is strictly unmanaged</span><br></pre></td></tr></table></figure>
-<h6 id="最佳解决"><a href="#最佳解决" class="headerlink" title="最佳解决"></a>最佳解决</h6></li>
+
+</li>
+</ul>
+<h6 id="最佳解决"><a href="#最佳解决" class="headerlink" title="最佳解决"></a>最佳解决</h6><ul>
 <li><p>关闭NetworkManager可以起作用，但不推荐，有线网卡消失是因为网卡未加入托管导致，这里重新纳入托管为最佳解决办法。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">查看托管状态</span><br><span class="line">nmcli n</span><br><span class="line">显示 disabled 则为本文遇到的问题，如果是 enabled 则可以不用往下看了</span><br><span class="line">开启 托管</span><br><span class="line">nmcli n on</span><br><span class="line">重启网络管理</span><br><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure></li>
 </ul>
