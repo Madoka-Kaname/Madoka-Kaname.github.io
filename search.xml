@@ -15,6 +15,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>AppStore上架流程</title>
+    <url>/2017/02/11/apple/2017-02-10-appstore-connect.html</url>
+    <content><![CDATA[<h2 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h2><ul>
+<li>苹果开发者账号</li>
+<li>最新的Xcode</li>
+</ul>
+<h2 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h2><ul>
+<li>登录开发者中心创建开发者证书、发布正书、AppId、开发者设备调试绑定、描述文件等</li>
+</ul>
+<h2 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h2><h2 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h2>]]></content>
+      <categories>
+        <category>apple</category>
+      </categories>
+      <tags>
+        <tag>apple</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决远程mysql数据库无法访问</title>
     <url>/2017/10/12/linux/2017-10-12-mysql-connect.html</url>
     <content><![CDATA[<a id="more"></a>
