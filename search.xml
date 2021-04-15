@@ -15,6 +15,42 @@
 ]]></content>
   </entry>
   <entry>
+    <title>解决远程mysql数据库无法访问</title>
+    <url>/2017/10/12/linux/2017-10-12-mysql-connect.html</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h6 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h6><ol>
+<li><p>如果是云主机需要放通mysql端口, 一般为3306端口</p>
+</li>
+<li><p>如果有防火墙, 需要修改规则, 允许访问</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 以centos7为例添加规则允许外界访问3306端口</span></span><br><span class="line">firewall-cmd —zone=public —add-port=3306/tcp —permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld.service</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改mysql权限</p>
+<ul>
+<li>修改访问规则并刷新规则</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* to &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;ymP1TinRFxpm&#39; WITH GRANT OPTION;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启mysql</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart mysqld.service</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决Centos虚拟机有线网卡消失</title>
     <url>/2021/03/12/linux/2021-03-12-centos-network-manager.html</url>
     <content><![CDATA[<blockquote>
