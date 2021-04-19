@@ -15,21 +15,45 @@
 ]]></content>
   </entry>
   <entry>
-    <title>AppStore上架流程</title>
-    <url>/2017/02/11/apple/2017-02-10-appstore-connect.html</url>
-    <content><![CDATA[<h2 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h2><ul>
-<li>苹果开发者账号</li>
-<li>最新的Xcode</li>
+    <title>go lang入门</title>
+    <url>/2017/04/19/golang/2017-04-19-go-install.html</url>
+    <content><![CDATA[<blockquote>
+<p>go</p>
+</blockquote>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><ul>
+<li><p><a href="http://books.studygolang.com/gopl-zh/">《The Go Programming Language》中文web版</a></p>
+</li>
+<li><p><a href="https://astaxie.gitbooks.io/build-web-application-with-golang/content/zh/01.1.html">《Go Web 编程》中文web版</a></p>
+</li>
 </ul>
-<h2 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h2><ul>
-<li>登录开发者中心创建开发者证书、发布正书、AppId、开发者设备调试绑定、描述文件等</li>
+<h3 id="centos7环境标准包方式安装和配置"><a href="#centos7环境标准包方式安装和配置" class="headerlink" title="centos7环境标准包方式安装和配置"></a>centos7环境标准包方式安装和配置</h3><ul>
+<li><p>如果系统是64,下载64位标准包,否则如果是32位,那么就下载32位标准包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -O https://golang.org/dl/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压到安装目录, 如安装到/usr/local目录下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar zvxf go1.16.3.linux-amd64.tar.gz -C /usr/<span class="built_in">local</span>/</span><br></pre></td></tr></table></figure></li>
+<li><p>配置环境变量</p>
+<ul>
+<li><p>打开环境变量配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加配置内容如下(具体的安装目录和工作目录以自己实际的为准)</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">export GOROOT=/usr/local/go</span><br><span class="line">export GOPATH=/var/www/core/go_work</span><br><span class="line">export GOBIN=$GOROOT/bin</span><br><span class="line">export PATH=$GOROOT/bin:$GOPATH/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新编译加载配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看<code>go env</code> 和 <code>go --version</code>, 看看配置是否生效</p>
+</li>
 </ul>
-<h2 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h2><h2 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h2>]]></content>
+</li>
+</ul>
+]]></content>
       <categories>
-        <category>apple</category>
+        <category>go lang</category>
       </categories>
       <tags>
-        <tag>apple</tag>
+        <tag>go lang</tag>
       </tags>
   </entry>
   <entry>
@@ -240,6 +264,24 @@
       <tags>
         <tag>php</tag>
         <tag>app</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AppStore上架流程</title>
+    <url>/2017/02/11/apple/2017-02-10-appstore-connect.html</url>
+    <content><![CDATA[<h2 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h2><ul>
+<li>苹果开发者账号</li>
+<li>最新的Xcode</li>
+</ul>
+<h2 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h2><ul>
+<li>登录开发者中心创建开发者证书、发布正书、AppId、开发者设备调试绑定、描述文件等</li>
+</ul>
+<h2 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h2><h2 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h2>]]></content>
+      <categories>
+        <category>apple</category>
+      </categories>
+      <tags>
+        <tag>apple</tag>
       </tags>
   </entry>
 </search>
