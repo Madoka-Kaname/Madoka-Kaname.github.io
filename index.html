@@ -197,20 +197,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -694,6 +694,116 @@
 <h6 id="方法二-pecl扩展库安装"><a href="#方法二-pecl扩展库安装" class="headerlink" title="方法二: pecl扩展库安装"></a>方法二: pecl扩展库安装</h6><ul>
 <li><p>终端执行指令</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ pecl install -o -f redis </span><br><span class="line">  </span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;extension=redis.so&quot;</span> &gt;&gt; /etc/php.ini</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/04/19/golang/2017-04-19-go-install.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kaname Madoka">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Madoka">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/04/19/golang/2017-04-19-go-install.html" class="post-title-link" itemprop="url">go lang入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-19 12:39:26" itemprop="dateCreated datePublished" datetime="2017-04-19T12:39:26+08:00">2017-04-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-19 11:38:02" itemprop="dateModified" datetime="2021-04-19T11:38:02+08:00">2021-04-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/go-lang/" itemprop="url" rel="index"><span itemprop="name">go lang</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>go</p>
+</blockquote>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="http://books.studygolang.com/gopl-zh/">《The Go Programming Language》中文web版</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://astaxie.gitbooks.io/build-web-application-with-golang/content/zh/01.1.html">《Go Web 编程》中文web版</a></p>
+</li>
+</ul>
+<h3 id="centos7环境标准包方式安装和配置"><a href="#centos7环境标准包方式安装和配置" class="headerlink" title="centos7环境标准包方式安装和配置"></a>centos7环境标准包方式安装和配置</h3><ul>
+<li><p>如果系统是64,下载64位标准包,否则如果是32位,那么就下载32位标准包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O https://golang.org/dl/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压到安装目录, 如安装到/usr/local目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zvxf go1.16.3.linux-amd64.tar.gz -C /usr/<span class="built_in">local</span>/</span><br></pre></td></tr></table></figure></li>
+<li><p>配置环境变量</p>
+<ul>
+<li><p>打开环境变量配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加配置内容如下(具体的安装目录和工作目录以自己实际的为准)</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go</span><br><span class="line">export GOPATH=/var/www/core/go_work</span><br><span class="line">export GOBIN=$GOROOT/bin</span><br><span class="line">export PATH=$GOROOT/bin:$GOPATH/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新编译加载配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看<code>go env</code> 和 <code>go --version</code>, 看看配置是否生效</p>
+</li>
+</ul>
+</li>
 </ul>
 
       
