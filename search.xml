@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/03/12/hello-world.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>go lang入门</title>
     <url>/2017/04/19/golang/2017-04-19-go-install.html</url>
     <content><![CDATA[<blockquote>
@@ -46,6 +32,41 @@
 <li><p>查看<code>go env</code> 和 <code>go --version</code>, 看看配置是否生效</p>
 </li>
 </ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>go lang</category>
+      </categories>
+      <tags>
+        <tag>go lang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go lang国内加速</title>
+    <url>/2017/04/20/golang/2017-04-20-go-proxy.html</url>
+    <content><![CDATA[<blockquote>
+<p>go</p>
+</blockquote>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>  众所周知的原因，go获取包的时候，经常会很慢，使得go的学习成本变高，现在推荐个方法，一步解决这个问题。那就是，goproxy的代理，用完你会发现肉眼可见的变快。</p>
+<h3 id="渠道加速"><a href="#渠道加速" class="headerlink" title="渠道加速"></a>渠道加速</h3><ul>
+<li>官方(速度慢): <a href="https://proxy.golang.org/">https://proxy.golang.org/</a></li>
+<li>Goproxy.io(全球cdn加速): <a href="https://goproxy.io/">https://goproxy.io/</a></li>
+<li>七牛云(中国): <a href="https://goproxy.cn/">https://goproxy.cn/</a></li>
+</ul>
+<h3 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h3><ul>
+<li><p>如果你是windows用户，在命令行执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env</span>:GO111MODULE=<span class="string">&quot;on&quot;</span></span><br><span class="line"><span class="variable">$env</span>:GOPROXY=<span class="string">&quot;https://goproxy.io&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果你是macOS用户或者linux用户，在/etc/profile文件最后，加入以下代码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Enable the go modules feature</span></span><br><span class="line"><span class="variable">$env</span>:GO111MODULE=<span class="string">&quot;on&quot;</span></span><br><span class="line"><span class="comment"># Set the GOPROXY environment variable</span></span><br><span class="line"><span class="variable">$env</span>:GOPROXY=<span class="string">&quot;https://goproxy.io&quot;</span></span><br><span class="line"><span class="comment"># 这里废话一句，如果你要当前bash生效，记得执行</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 </li>
 </ul>
 ]]></content>
@@ -148,6 +169,24 @@
       <tags>
         <tag>linux</tag>
         <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AppStore上架流程</title>
+    <url>/2017/02/11/apple/2017-02-10-appstore-connect.html</url>
+    <content><![CDATA[<h2 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h2><ul>
+<li>苹果开发者账号</li>
+<li>最新的Xcode</li>
+</ul>
+<h2 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h2><ul>
+<li>登录开发者中心创建开发者证书、发布正书、AppId、开发者设备调试绑定、描述文件等</li>
+</ul>
+<h2 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h2><h2 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h2>]]></content>
+      <categories>
+        <category>apple</category>
+      </categories>
+      <tags>
+        <tag>apple</tag>
       </tags>
   </entry>
   <entry>
@@ -264,24 +303,6 @@
       <tags>
         <tag>php</tag>
         <tag>app</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AppStore上架流程</title>
-    <url>/2017/02/11/apple/2017-02-10-appstore-connect.html</url>
-    <content><![CDATA[<h2 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h2><ul>
-<li>苹果开发者账号</li>
-<li>最新的Xcode</li>
-</ul>
-<h2 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h2><ul>
-<li>登录开发者中心创建开发者证书、发布正书、AppId、开发者设备调试绑定、描述文件等</li>
-</ul>
-<h2 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h2><h2 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h2>]]></content>
-      <categories>
-        <category>apple</category>
-      </categories>
-      <tags>
-        <tag>apple</tag>
       </tags>
   </entry>
 </search>
