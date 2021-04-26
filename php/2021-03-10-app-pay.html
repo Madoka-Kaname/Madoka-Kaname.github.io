@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="使用php语言接入支付宝和微信的app支付, 基于yansongda&#x2F;pay扩展包(非laravel版本) v2版本, laravel框架有单独的版本和使用方式">
+<meta property="og:type" content="website">
+<meta property="og:title" content="使用php接入app支付">
+<meta property="og:url" content="http://example.com/php/2021-03-10-app-pay.html">
+<meta property="og:site_name" content="Madoka">
+<meta property="og:description" content="使用php语言接入支付宝和微信的app支付, 基于yansongda&#x2F;pay扩展包(非laravel版本) v2版本, laravel框架有单独的版本和使用方式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-06-11T22:24:30.000Z">
+<meta property="article:modified_time" content="2021-04-26T02:43:09.497Z">
+<meta property="article:author" content="Kaname Madoka">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="app">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/php/2021-03-10-app-pay.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>使用php接入app支付 | Madoka
+</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Madoka</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">马猴烧酒</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">文档地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#github%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">github地址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%AF%B4%E6%98%8E"><span class="nav-number"></span> <span class="nav-text">其他说明</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%AE%9D%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">支付宝配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">微信支付配置</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kaname Madoka</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner page posts-expand">
+  
+  
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">使用php接入app支付
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <blockquote>
+<p>使用php语言接入支付宝和微信的app支付, 基于<code>yansongda/pay</code>扩展包(非laravel版本) v2版本, laravel框架有单独的版本和使用方式</p>
+</blockquote>
+<a id="more"></a>
+
+<h6 id="文档地址"><a href="#文档地址" class="headerlink" title="文档地址"></a>文档地址</h6><p><a target="_blank" rel="noopener" href="https://pay.yansongda.cn/docs/v2/">https://pay.yansongda.cn/docs/v2/</a></p>
+<h6 id="github地址"><a href="#github地址" class="headerlink" title="github地址"></a>github地址</h6><p><a target="_blank" rel="noopener" href="https://github.com/yansongda/pay">https://github.com/yansongda/pay</a></p>
+<h5 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h5>  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 微信开放平台账号可以创建多个应用，如果是app请选移动应用，移动应用的主体和软著需一致, 一个应用可以关联多个支付商户号</span><br><span class="line">2. 支付宝和微信特殊行业需要资质审核</span><br></pre></td></tr></table></figure>
+<h6 id="支付宝配置"><a href="#支付宝配置" class="headerlink" title="支付宝配置"></a>支付宝配置</h6><p>具体商户如何申请移动应用和绑定参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c15db5fb187b">这里</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Yansongda</span>\<span class="title">Pay</span>\<span class="title">Pay</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Yansongda</span>\<span class="title">Pay</span>\<span class="title">Log</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PayController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$config</span> = [</span><br><span class="line">        <span class="string">&#x27;app_id&#x27;</span> =&gt; <span class="string">&#x27;2016082000295641&#x27;</span>,      <span class="comment">// 申请的移动应用appid</span></span><br><span class="line">        <span class="string">&#x27;notify_url&#x27;</span> =&gt; <span class="string">&#x27;http://yansongda.cn/notify.php&#x27;</span>,  <span class="comment">// 异步回调地址</span></span><br><span class="line">        <span class="string">&#x27;return_url&#x27;</span> =&gt; <span class="string">&#x27;http://yansongda.cn/return.php&#x27;</span>,  <span class="comment">// 同步回调地址 一般不用</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ali_public_key是支付公钥， 不是应用公钥</span></span><br><span class="line">        <span class="string">&#x27;ali_public_key&#x27;</span> =&gt; <span class="string">&#x27;MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuWJKrQ6SWvS6niI+4vEVZiYfjkCfLQfoFI2nCp9ZLDS42QtiL4Ccyx8scgc3nhVwmVRte8f57TFvGhvJD0upT4O5O/lRxmTjechXAorirVdAODpOu0mFfQV9y/T9o9hHnU+VmO5spoVb3umqpq6D/Pt8p25Yk852/w01VTIczrXC4QlrbOEe3sr1E9auoC7rgYjjCO6lZUIDjX/oBmNXZxhRDrYx4Yf5X7y8FRBFvygIE2FgxV4Yw+SL3QAa2m5MLcbusJpxOml9YVQfP8iSurx41PvvXUMo49JG3BDVernaCYXQCoUJv9fJwbnfZd7J5YByC+5KM4sblJTq7bXZWQIDAQAB&#x27;</span>,</span><br><span class="line">        <span class="comment">// 加密方式： **RSA2**  </span></span><br><span class="line">        <span class="string">&#x27;private_key&#x27;</span> =&gt; <span class="string">&#x27;MIIEpAIBAAKCAQEAs6+F2leOgOrvj9jTeDhb5q46GewOjqLBlGSs/bVL4Z3fMr3p+Q1Tux/6uogeVi/eHd84xvQdfpZ87A1SfoWnEGH5z15yorccxSOwWUI+q8gz51IWqjgZxhWKe31BxNZ+prnQpyeMBtE25fXp5nQZ/pftgePyUUvUZRcAUisswntobDQKbwx28VCXw5XB2A+lvYEvxmMv/QexYjwKK4M54j435TuC3UctZbnuynSPpOmCu45ZhEYXd4YMsGMdZE5/077ZU1aU7wx/gk07PiHImEOCDkzqsFo0Buc/knGcdOiUDvm2hn2y1XvwjyFOThsqCsQYi4JmwZdRa8kvOf57nwIDAQABAoIBAQCw5QCqln4VTrTvcW+msB1ReX57nJgsNfDLbV2dG8mLYQemBa9833DqDK6iynTLNq69y88ylose33o2TVtEccGp8Dqluv6yUAED14G6LexS43KtrXPgugAtsXE253ZDGUNwUggnN1i0MW2RcMqHdQ9ORDWvJUCeZj/AEafgPN8AyiLrZeL07jJz/uaRfAuNqkImCVIarKUX3HBCjl9TpuoMjcMhz/MsOmQ0agtCatO1eoH1sqv5Odvxb1i59c8Hvq/mGEXyRuoiDo05SE6IyXYXr84/Nf2xvVNHNQA6kTckj8shSi+HGM4mO1Y4Pbb7XcnxNkT0Inn6oJMSiy56P+CpAoGBAO1O+5FE1ZuVGuLb48cY+0lHCD+nhSBd66B5FrxgPYCkFOQWR7pWyfNDBlmO3SSooQ8TQXA25blrkDxzOAEGX57EPiipXr/hy5e+WNoukpy09rsO1TMsvC+v0FXLvZ+TIAkqfnYBgaT56ku7yZ8aFGMwdCPL7WJYAwUIcZX8wZ3dAoGBAMHWplAqhe4bfkGOEEpfs6VvEQxCqYMYVyR65K0rI1LiDZn6Ij8fdVtwMjGKFSZZTspmsqnbbuCE/VTyDzF4NpAxdm3cBtZACv1Lpu2Om+aTzhK2PI6WTDVTKAJBYegXaahBCqVbSxieR62IWtmOMjggTtAKWZ1P5LQcRwdkaB2rAoGAWnAPT318Kp7YcDx8whOzMGnxqtCc24jvk2iSUZgb2Dqv+3zCOTF6JUsV0Guxu5bISoZ8GdfSFKf5gBAo97sGFeuUBMsHYPkcLehM1FmLZk1Q+ljcx3P1A/ds3kWXLolTXCrlpvNMBSN5NwOKAyhdPK/qkvnUrfX8sJ5XK2H4J8ECgYAGIZ0HIiE0Y+g9eJnpUFelXvsCEUW9YNK4065SD/BBGedmPHRC3OLgbo8X5A9BNEf6vP7fwpIiRfKhcjqqzOuk6fueA/yvYD04v+Da2MzzoS8+hkcqF3T3pta4I4tORRdRfCUzD80zTSZlRc/h286Y2eTETd+By1onnFFe2X01mwKBgQDaxo4PBcLL2OyVT5DoXiIdTCJ8KNZL9+kV1aiBuOWxnRgkDjPngslzNa1bK+klGgJNYDbQqohKNn1HeFX3mYNfCUpuSnD2Yag53Dd/1DLO+NxzwvTu4D6DCUnMMMBVaF42ig31Bs0jI3JQZVqeeFzSET8fkoFopJf3G6UXlrIEAQ==&#x27;</span>,</span><br><span class="line">        <span class="comment">// 使用公钥证书模式，请配置下面两个参数，同时修改ali_public_key为以.crt结尾的支付宝公钥证书路径，如（./cert/alipayCertPublicKey_RSA2.crt）</span></span><br><span class="line">        <span class="comment">// &#x27;app_cert_public_key&#x27; =&gt; &#x27;./cert/appCertPublicKey.crt&#x27;, //应用公钥证书路径</span></span><br><span class="line">        <span class="comment">// &#x27;alipay_root_cert&#x27; =&gt; &#x27;./cert/alipayRootCert.crt&#x27;, //支付宝根证书路径</span></span><br><span class="line">        <span class="string">&#x27;log&#x27;</span> =&gt; [ <span class="comment">// optional</span></span><br><span class="line">            <span class="string">&#x27;file&#x27;</span> =&gt; <span class="string">&#x27;./logs/alipay.log&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;level&#x27;</span> =&gt; <span class="string">&#x27;info&#x27;</span>, <span class="comment">// 建议生产环境等级调整为 info，开发环境为 debug</span></span><br><span class="line">            <span class="string">&#x27;type&#x27;</span> =&gt; <span class="string">&#x27;single&#x27;</span>, <span class="comment">// optional, 可选 daily.</span></span><br><span class="line">            <span class="string">&#x27;max_file&#x27;</span> =&gt; <span class="number">30</span>, <span class="comment">// optional, 当 type 为 daily 时有效，默认 30 天</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&#x27;http&#x27;</span> =&gt; [ <span class="comment">// optional</span></span><br><span class="line">            <span class="string">&#x27;timeout&#x27;</span> =&gt; <span class="number">5.0</span>,</span><br><span class="line">            <span class="string">&#x27;connect_timeout&#x27;</span> =&gt; <span class="number">5.0</span>,</span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&#x27;mode&#x27;</span> =&gt; <span class="string">&#x27;dev&#x27;</span>, <span class="comment">// optional,设置此参数，将进入沙箱模式</span></span><br><span class="line">    ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 生成支付签名和参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$order</span> = [</span><br><span class="line">            <span class="string">&#x27;out_trade_no&#x27;</span> =&gt; <span class="string">&#x27;213213211312&#x27;</span>,  <span class="comment">// 商户自己生成的内部唯一支付单号</span></span><br><span class="line">            <span class="string">&#x27;total_amount&#x27;</span> =&gt; <span class="string">&#x27;0.01&#x27;</span>,  <span class="comment">// 支付金额 单位元</span></span><br><span class="line">            <span class="string">&#x27;subject&#x27;</span> =&gt; <span class="string">&#x27;test subject - 测试&#x27;</span>,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Pay::alipay(<span class="keyword">$this</span>-&gt;config)-&gt;app(<span class="variable">$order</span>)-&gt;getContent();</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 异步回调</span></span><br><span class="line">     <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 验签</span></span><br><span class="line">        <span class="variable">$alipay</span> = Pay::alipay(<span class="keyword">$this</span>-&gt;config);</span><br><span class="line">        <span class="variable">$data</span>   = <span class="variable">$alipay</span>-&gt;verify();</span><br><span class="line">        </span><br><span class="line">        <span class="variable">$out_trade_no</span>   = <span class="variable">$data</span>-&gt;out_trade_no;  <span class="comment">// 商户自己生成的内部唯一支付单号</span></span><br><span class="line">        <span class="variable">$total_amount</span>   = <span class="variable">$data</span>-&gt;total_amount;     <span class="comment">// 支付金额 单位元</span></span><br><span class="line">        <span class="variable">$trade_no</span>       = <span class="variable">$data</span>-&gt;trade_no;  <span class="comment">// 交易流水号</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 发起退款申请</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">refund</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$refund_data</span> = [</span><br><span class="line">            <span class="string">&#x27;type&#x27;</span>           =&gt; <span class="string">&#x27;app&#x27;</span>,  <span class="comment">// 标识为app 必填为app</span></span><br><span class="line">            <span class="string">&#x27;trade_no&#x27;</span>       =&gt; <span class="string">&#x27;2020123121212&#x27;</span>, <span class="comment">// 原支付交易流水号</span></span><br><span class="line">            <span class="string">&#x27;out_request_no&#x27;</span> =&gt; <span class="string">&#x27;3213213131213&#x27;</span>,  <span class="comment">// 商户自己生成的内部唯一退款单号</span></span><br><span class="line">            <span class="string">&#x27;refund_amount&#x27;</span>  =&gt; <span class="string">&#x27;0.01&#x27;</span>,  <span class="comment">// 退款金额 单位元</span></span><br><span class="line">        ];</span><br><span class="line">        <span class="variable">$result</span> =  Pay::alipay(<span class="keyword">$this</span>-&gt;config)-&gt;refund(<span class="variable">$refund_data</span>);</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">string</span>)<span class="variable">$result</span>-&gt;code !== <span class="string">&#x27;10000&#x27;</span>) &#123;</span><br><span class="line">            <span class="comment">// 接口调用失败</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="built_in">Exception</span>(<span class="variable">$result</span>-&gt;msg);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 接口调用成功</span></span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 退款查询</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">query_refund</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$data</span> = [ </span><br><span class="line">            <span class="string">&#x27;type&#x27;</span>           =&gt; <span class="string">&#x27;app&#x27;</span>, <span class="comment">// 标识为app 必填为app</span></span><br><span class="line">            <span class="string">&#x27;out_trade_no&#x27;</span>   =&gt; <span class="string">&#x27;213213211312&#x27;</span>, <span class="comment">// 原支付订单的内部唯一单号</span></span><br><span class="line">            <span class="string">&#x27;out_request_no&#x27;</span> =&gt; <span class="string">&#x27;3213213131213&#x27;</span>,  <span class="comment">// 商户自己生成的内部唯一退款单号</span></span><br><span class="line">        ];</span><br><span class="line">        <span class="variable">$result</span> = Pay::alipay(<span class="keyword">$this</span>-&gt;config)-&gt;find(<span class="variable">$data</span>, <span class="string">&#x27;refund&#x27;</span>);   </span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">string</span>)<span class="variable">$result</span>-&gt;code !== <span class="string">&#x27;10000&#x27;</span>)&#123;</span><br><span class="line">            <span class="comment">// 未查到或者到账失败</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 查到到账信息</span></span><br><span class="line">            <span class="variable">$trade_no</span> = <span class="variable">$result</span>-&gt;trade_no;  <span class="comment">// 退款交易单号</span></span><br><span class="line">            <span class="variable">$money</span> = <span class="variable">$result</span>-&gt;refund_amount;  <span class="comment">// 退款金额 单位元</span></span><br><span class="line">        &#125;              </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h6 id="微信支付配置"><a href="#微信支付配置" class="headerlink" title="微信支付配置"></a>微信支付配置</h6><ul>
+<li>具体如何申请商户号和app支付功能参考<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/02027811706ea61bcd9ce54c.html">这里</a></li>
+<li>具体配置参考<a target="_blank" rel="noopener" href="https://app.applebyme.cn/doc/guide/wxpay.cshtml">这里</a></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Yansongda</span>\<span class="title">Pay</span>\<span class="title">Pay</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Yansongda</span>\<span class="title">Pay</span>\<span class="title">Log</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PayController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$config</span> = [</span><br><span class="line">        <span class="string">&#x27;appid&#x27;</span> =&gt; <span class="string">&#x27;wxb3fxxxxxxxxxxx&#x27;</span>, <span class="comment">// APP APPID</span></span><br><span class="line">        <span class="comment">//&#x27;app_id&#x27; =&gt; &#x27;wxb3fxxxxxxxxxxx&#x27;, // 公众号 APPID</span></span><br><span class="line">        <span class="comment">//&#x27;miniapp_id&#x27; =&gt; &#x27;wxb3fxxxxxxxxxxx&#x27;, // 小程序 APPID</span></span><br><span class="line">        <span class="string">&#x27;mch_id&#x27;</span> =&gt; <span class="string">&#x27;14577xxxx&#x27;</span>,  <span class="comment">// 支付商户号id</span></span><br><span class="line">        <span class="string">&#x27;key&#x27;</span> =&gt; <span class="string">&#x27;mF2suE9sU6Mk1Cxxxxxxxxxxx&#x27;</span>,  <span class="comment">// api支付秘钥</span></span><br><span class="line">        <span class="string">&#x27;notify_url&#x27;</span> =&gt; <span class="string">&#x27;http://yanda.net.cn/notify.php&#x27;</span>,  <span class="comment">// 异步回调地址</span></span><br><span class="line">    </span><br><span class="line">        <span class="comment">// api支付证书</span></span><br><span class="line">        <span class="string">&#x27;cert_client&#x27;</span> =&gt; <span class="string">&#x27;./cert/apiclient_cert.pem&#x27;</span>, <span class="comment">// optional，退款等情况时用到</span></span><br><span class="line">        <span class="string">&#x27;cert_key&#x27;</span> =&gt; <span class="string">&#x27;./cert/apiclient_key.pem&#x27;</span>,<span class="comment">// optional，退款等情况时用到</span></span><br><span class="line">    </span><br><span class="line">        <span class="string">&#x27;log&#x27;</span> =&gt; [ <span class="comment">// optional</span></span><br><span class="line">            <span class="string">&#x27;file&#x27;</span> =&gt; <span class="string">&#x27;./logs/wechat.log&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;level&#x27;</span> =&gt; <span class="string">&#x27;info&#x27;</span>, <span class="comment">// 建议生产环境等级调整为 info，开发环境为 debug</span></span><br><span class="line">            <span class="string">&#x27;type&#x27;</span> =&gt; <span class="string">&#x27;single&#x27;</span>, <span class="comment">// optional, 可选 daily.</span></span><br><span class="line">            <span class="string">&#x27;max_file&#x27;</span> =&gt; <span class="number">30</span>, <span class="comment">// optional, 当 type 为 daily 时有效，默认 30 天</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&#x27;http&#x27;</span> =&gt; [ <span class="comment">// optional</span></span><br><span class="line">            <span class="string">&#x27;timeout&#x27;</span> =&gt; <span class="number">5.0</span>,</span><br><span class="line">            <span class="string">&#x27;connect_timeout&#x27;</span> =&gt; <span class="number">5.0</span>,</span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&#x27;mode&#x27;</span> =&gt; <span class="string">&#x27;dev&#x27;</span>, <span class="comment">// optional, dev/hk;当为 `hk` 时，为香港 gateway。</span></span><br><span class="line">    ];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 生成支付签名和参数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$order</span> = [</span><br><span class="line">            <span class="string">&#x27;out_trade_no&#x27;</span> =&gt; <span class="string">&#x27;213213211312&#x27;</span>,  <span class="comment">// 商户自己生成的内部唯一支付单号</span></span><br><span class="line">            <span class="string">&#x27;total_fee&#x27;</span> =&gt; <span class="string">&#x27;1&#x27;</span>,  <span class="comment">// 支付金额 单位分</span></span><br><span class="line">            <span class="string">&#x27;body&#x27;</span> =&gt; <span class="string">&#x27;test subject - 测试&#x27;</span>,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Pay::wechat(<span class="keyword">$this</span>-&gt;config)-&gt;app(<span class="variable">$order</span>)-&gt;getContent();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 异步回调</span></span><br><span class="line">     <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 验签</span></span><br><span class="line">        <span class="variable">$wechat</span> = Pay::wechat(<span class="keyword">$this</span>-&gt;config);</span><br><span class="line">        <span class="variable">$data</span>   = <span class="variable">$wechat</span>-&gt;verify();</span><br><span class="line">        </span><br><span class="line">        <span class="variable">$out_trade_no</span>   = <span class="variable">$data</span>-&gt;out_trade_no;  <span class="comment">// 商户自己生成的内部唯一支付单号</span></span><br><span class="line">        <span class="variable">$total_fee</span>      = <span class="variable">$data</span>-&gt;total_fee;     <span class="comment">// 支付金额 单位分</span></span><br><span class="line">        <span class="variable">$transaction_id</span> = <span class="variable">$data</span>-&gt;transaction_id;  <span class="comment">// 交易流水号</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 发起退款申请</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">refund</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$refund_data</span> = [</span><br><span class="line">            <span class="string">&#x27;type&#x27;</span>           =&gt; <span class="string">&#x27;app&#x27;</span>,  <span class="comment">// 标识为app 必填为app</span></span><br><span class="line">            <span class="string">&#x27;transaction_id&#x27;</span> =&gt; <span class="string">&#x27;2020123121212&#x27;</span>, <span class="comment">// 原支付交易流水号</span></span><br><span class="line">            <span class="string">&#x27;out_refund_no&#x27;</span>  =&gt; <span class="string">&#x27;3213213131213&#x27;</span>,  <span class="comment">// 商户自己生成的内部唯一退款单号</span></span><br><span class="line">            <span class="string">&#x27;refund_fee&#x27;</span>     =&gt; <span class="string">&#x27;1&#x27;</span>,  <span class="comment">// 退款金额 单位分</span></span><br><span class="line">            <span class="string">&#x27;total_fee&#x27;</span>      =&gt; <span class="string">&#x27;1&#x27;</span>,  <span class="comment">// 原支付金额 单位分</span></span><br><span class="line">            <span class="string">&#x27;refund_desc&#x27;</span>    =&gt; <span class="string">&#x27;退款测试&#x27;</span>,  </span><br><span class="line">        ];</span><br><span class="line">        <span class="variable">$result</span> =  Pay::wechat(<span class="keyword">$this</span>-&gt;config)-&gt;refund(<span class="variable">$refund_data</span>);</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">string</span>)<span class="variable">$result</span>-&gt;return_code !== <span class="string">&#x27;SUCCESS&#x27;</span>) &#123;</span><br><span class="line">            <span class="comment">// 接口调用失败</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="built_in">Exception</span>(<span class="variable">$result</span>-&gt;return_msg);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 接口调用成功</span></span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 退款查询</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">query_refund</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$data</span> = [ </span><br><span class="line">            <span class="string">&#x27;type&#x27;</span>           =&gt; <span class="string">&#x27;app&#x27;</span>, <span class="comment">// 标识为app 必填为app</span></span><br><span class="line">            <span class="string">&#x27;out_refund_no&#x27;</span>  =&gt; <span class="string">&#x27;3213213131213&#x27;</span>,  <span class="comment">// 商户自己生成的内部唯一退款单号</span></span><br><span class="line">        ];</span><br><span class="line">        <span class="variable">$result</span> = Pay::wechat(<span class="keyword">$this</span>-&gt;config)-&gt;find(<span class="variable">$data</span>, <span class="string">&#x27;refund&#x27;</span>);   </span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">string</span>)<span class="variable">$result</span>-&gt;return_code !== <span class="string">&#x27;SUCCESS&#x27;</span>)&#123;</span><br><span class="line">            <span class="comment">// 未查到或者到账失败</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 查到到账信息 多笔根据下标取, 下标从0开始</span></span><br><span class="line">            <span class="variable">$trade_no</span> = <span class="variable">$result</span>-&gt;refund_id_0;  <span class="comment">// 退款交易单号</span></span><br><span class="line">            <span class="variable">$money</span> = <span class="variable">$result</span>-&gt;refund_fee_0;  <span class="comment">// 退款金额 单位分</span></span><br><span class="line">        &#125;              </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaname Madoka</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
