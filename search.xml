@@ -1,21 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AppStore上架流程</title>
+    <title>苹果应用上架appstore流程</title>
     <url>/2017/02/11/apple/2017-02-10-appstore-connect.html</url>
-    <content><![CDATA[<h2 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h2><ul>
+    <content><![CDATA[<h5 id="必要的准备"><a href="#必要的准备" class="headerlink" title="必要的准备"></a>必要的准备</h5><ul>
 <li>苹果开发者账号</li>
 <li>最新的Xcode</li>
 </ul>
-<h2 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h2><ul>
+<h5 id="开发者发布证书、AppID和描述文件的配置"><a href="#开发者发布证书、AppID和描述文件的配置" class="headerlink" title="开发者发布证书、AppID和描述文件的配置"></a>开发者发布证书、AppID和描述文件的配置</h5><ul>
 <li>登录开发者中心创建开发者证书、发布正书、AppId、开发者设备调试绑定、描述文件等</li>
 </ul>
-<h2 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h2><h2 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h2>]]></content>
+<h5 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h5><h5 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h5><h5 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h5><ul>
+<li><a href="https://www.jianshu.com/p/e5ac7b05750a">iOS最新应用上架App Store流程</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/141191661">iOS上架App Store最详细流程</a></li>
+</ul>
+]]></content>
       <categories>
         <category>apple</category>
       </categories>
       <tags>
         <tag>apple</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github加速</title>
+    <url>/2019/01/12/github/2019-01-12-github-proxy.html</url>
+    <content><![CDATA[<blockquote>
+<p>github</p>
+</blockquote>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>  众所周知的原因，github服务器在国外，因为墙的原因，获取包的时候，所以需要配置代理服务。</p>
+<h3 id="代理加速"><a href="#代理加速" class="headerlink" title="代理加速"></a>代理加速</h3><ul>
+<li><p>梯子一个</p>
+</li>
+<li><p>配置http协议代理</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为全局的 git 项目都设置代理(192.168.0.88:7078为代理服务地址)</span></span><br><span class="line">git config --global http.proxy 192.168.0.88:7078</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为某个 git 项目单独设置代理</span></span><br><span class="line">git config --<span class="built_in">local</span> http.proxy 192.168.0.88:7078</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>另外还有<code>https</code>和<code>socks5</code>协议的代理, 方法类似.</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -303,6 +331,33 @@
       <tags>
         <tag>php</tag>
         <tag>app</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>svn版本管理工具</title>
+    <url>/2017/06/01/tools/2017-06-01-svn-manage.html</url>
+    <content><![CDATA[<blockquote>
+<p>svn</p>
+</blockquote>
+<h3 id="搭建svn服务"><a href="#搭建svn服务" class="headerlink" title="搭建svn服务"></a>搭建svn服务</h3><ul>
+<li><p>yum安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install subversion</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /home/subversion</span><br><span class="line">svnadmin create /home/subversion/yjy_api</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="配置仓库权限和钩子"><a href="#配置仓库权限和钩子" class="headerlink" title="配置仓库权限和钩子"></a>配置仓库权限和钩子</h3><ul>
+<li>修改</li>
+</ul>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>svn</tag>
+        <tag>tools</tag>
       </tags>
   </entry>
 </search>
