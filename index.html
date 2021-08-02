@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -401,6 +401,104 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为全局的 git 项目都设置代理(192.168.0.88:7078为代理服务地址)</span></span><br><span class="line">git config --global http.proxy 192.168.0.88:7078</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为某个 git 项目单独设置代理</span></span><br><span class="line">git config --<span class="built_in">local</span> http.proxy 192.168.0.88:7078</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>另外还有<code>https</code>和<code>socks5</code>协议的代理, 方法类似.</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/28/golang/2018-12-28-go-mod.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kaname Madoka">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Madoka">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/12/28/golang/2018-12-28-go-mod.html" class="post-title-link" itemprop="url">go.mod使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-28 12:49:26" itemprop="dateCreated datePublished" datetime="2018-12-28T12:49:26+08:00">2018-12-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-02 15:50:11" itemprop="dateModified" datetime="2021-08-02T15:50:11+08:00">2021-08-02</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/go-mod/" itemprop="url" rel="index"><span itemprop="name">go.mod</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>go.mod是Golang 1.11版本新引入的官方包管理工具用于解决之前没有地方记录依赖包具体版本的问题，方便依赖包的管理</p>
+</blockquote>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
+<li><p>初始化</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 新建一个目录，并使用go mod init初始化生成 go.mod 文件。</span><br><span class="line">cd go_test</span><br><span class="line">go mod init madoka/go_test.mod</span><br><span class="line"></span><br><span class="line">2. go.mod 文件一旦创建后，它的内容将会被 go toolchain 全面掌控，go toolchain 会在各类命令执行时，比如go get、go build、go mod等修改和维护 go.mod 文件。</span><br><span class="line">3. 手动更新mod缓存, go mod tidy</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
 </li>
 </ul>
 
@@ -1111,120 +1209,6 @@
 <h5 id="通过xcode将构建版本上传到appstore"><a href="#通过xcode将构建版本上传到appstore" class="headerlink" title="通过xcode将构建版本上传到appstore"></a>通过xcode将构建版本上传到appstore</h5><h5 id="进入iTunes-Connect提交app信息"><a href="#进入iTunes-Connect提交app信息" class="headerlink" title="进入iTunes Connect提交app信息"></a>进入iTunes Connect提交app信息</h5><h5 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h5><ul>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e5ac7b05750a">iOS最新应用上架App Store流程</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141191661">iOS上架App Store最详细流程</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2016/06/12/php/2016-06-12-composer.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kaname Madoka">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Madoka">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/06/12/php/2016-06-12-composer.html" class="post-title-link" itemprop="url">composer的安装和使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2016-06-12 06:24:30" itemprop="dateCreated datePublished" datetime="2016-06-12T06:24:30+08:00">2016-06-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-26 10:34:10" itemprop="dateModified" datetime="2021-04-26T10:34:10+08:00">2021-04-26</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="安装composer"><a href="#安装composer" class="headerlink" title="安装composer"></a>安装<code>composer</code></h2><ul>
-<li><p>版本要求<code>php &gt;= 5.4</code> </p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://docs.phpcomposer.com/">官方文档地址</a></p>
-</li>
-<li><p>终端指令安装</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ php -r <span class="string">&quot;copy(&#x27;https://install.phpcomposer.com/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span></span><br><span class="line"></span><br><span class="line">$ php composer-setup.php</span><br><span class="line"></span><br><span class="line">$ php -r <span class="string">&quot;unlink(&#x27;composer-setup.php&#x27;);&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>全局配置</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更换镜像加速源</p>
-<ul>
-<li><p><code>packagist</code>中文镜像</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>阿里云镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>腾讯云镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用composer"><a href="#使用composer" class="headerlink" title="使用composer"></a>使用<code>composer</code></h2><ul>
-<li><p>添加包</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer require <span class="string">&quot;foo/bar:1.0.0&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>移除包</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer require foo/bar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新加载配置</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer dump-autoload</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
