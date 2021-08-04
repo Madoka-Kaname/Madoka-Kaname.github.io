@@ -131,7 +131,7 @@
 </blockquote>
 <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
 <li><p>初始化</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">1. 新建一个目录，并使用go mod init初始化生成 go.mod 文件。</span><br><span class="line">cd go_test</span><br><span class="line">go mod init madoka/go_test.mod</span><br><span class="line"></span><br><span class="line">2. go.mod 文件一旦创建后，它的内容将会被 go toolchain 全面掌控，go toolchain 会在各类命令执行时，比如go get、go build、go mod等修改和维护 go.mod 文件。</span><br><span class="line">3. 手动更新mod缓存, go mod tidy</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">1. 新建一个目录，并使用go mod init初始化生成 go.mod 文件。</span><br><span class="line">cd go_test</span><br><span class="line">go mod init madoka/go_test.mod</span><br><span class="line"></span><br><span class="line">2. go.mod 文件一旦创建后，它的内容将会被 go toolchain 全面掌控，go toolchain 会在各类命令执行时，比如go get、go build、go mod等修改和维护 go.mod 文件。</span><br><span class="line">3. 列出所有mod, go list -m all, 手动更新mod缓存, go mod tidy</span><br></pre></td></tr></table></figure>
 
 
 
