@@ -23,22 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="centos系统虚拟机的有线网卡突然消失，导致网络无法连接">
+<meta name="description" content="go.mod是Golang 1.11版本新引入的官方包管理工具用于解决之前没有地方记录依赖包具体版本的问题，方便依赖包的管理  使用方法 初始化 1234561. 新建一个目录，并使用go mod init初始化生成 go.mod 文件。cd go_testgo mod init madoka&#x2F;go_test.mod2. go.mod 文件一旦创建后，它的内容将会被 go toolchain 全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决Centos虚拟机有线网卡消失">
-<meta property="og:url" content="http://example.com/2021/03/12/linux/2021-03-12-centos-network-manager.html">
+<meta property="og:title" content="go.mod使用">
+<meta property="og:url" content="http://example.com/2018/12/28/golang/2018-12-28-go-mod.html">
 <meta property="og:site_name" content="Madoka">
-<meta property="og:description" content="centos系统虚拟机的有线网卡突然消失，导致网络无法连接">
+<meta property="og:description" content="go.mod是Golang 1.11版本新引入的官方包管理工具用于解决之前没有地方记录依赖包具体版本的问题，方便依赖包的管理  使用方法 初始化 1234561. 新建一个目录，并使用go mod init初始化生成 go.mod 文件。cd go_testgo mod init madoka&#x2F;go_test.mod2. go.mod 文件一旦创建后，它的内容将会被 go toolchain 全">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-12T07:19:28.000Z">
-<meta property="article:modified_time" content="2021-08-02T02:22:00.000Z">
+<meta property="article:published_time" content="2018-12-28T04:49:26.000Z">
+<meta property="article:modified_time" content="2021-08-04T02:52:20.000Z">
 <meta property="article:author" content="Kaname Madoka">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="centos">
+<meta property="article:tag" content="go lang">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/03/12/linux/2021-03-12-centos-network-manager.html">
+<link rel="canonical" href="http://example.com/2018/12/28/golang/2018-12-28-go-mod.html">
 
 
 <script class="page-configurations">
@@ -50,7 +49,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>解决Centos虚拟机有线网卡消失 | Madoka</title>
+<title>go.mod使用 | Madoka</title>
   
 
 
@@ -189,7 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">出现的问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">最佳解决</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">使用方法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -255,7 +254,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/12/linux/2021-03-12-centos-network-manager.html">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/28/golang/2018-12-28-go-mod.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -268,7 +267,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          解决Centos虚拟机有线网卡消失
+          go.mod使用
         </h1>
 
         <div class="post-meta-container">
@@ -279,14 +278,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-12 15:19:28" itemprop="dateCreated datePublished" datetime="2021-03-12T15:19:28+08:00">2021-03-12</time>
+      <time title="创建时间：2018-12-28 12:49:26" itemprop="dateCreated datePublished" datetime="2018-12-28T12:49:26+08:00">2018-12-28</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-02 10:22:00" itemprop="dateModified" datetime="2021-08-02T10:22:00+08:00">2021-08-02</time>
+        <time title="修改时间：2021-08-04 10:52:20" itemprop="dateModified" datetime="2021-08-04T10:52:20+08:00">2021-08-04</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,7 +293,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+          <a href="/categories/go-mod/" itemprop="url" rel="index"><span itemprop="name">go.mod</span></a>
         </span>
     </span>
 
@@ -309,19 +308,23 @@
     
     <div class="post-body" itemprop="articleBody">
         <blockquote>
-<p>centos系统虚拟机的有线网卡突然消失，导致网络无法连接</p>
+<p>go.mod是Golang 1.11版本新引入的官方包管理工具用于解决之前没有地方记录依赖包具体版本的问题，方便依赖包的管理</p>
 </blockquote>
-<a id="more"></a>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ul>
+<li><p>初始化</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 新建一个目录，并使用go mod init初始化生成 go.mod 文件。</span><br><span class="line">cd go_test</span><br><span class="line">go mod init madoka/go_test.mod</span><br><span class="line"></span><br><span class="line">2. go.mod 文件一旦创建后，它的内容将会被 go toolchain 全面掌控，go toolchain 会在各类命令执行时，比如go get、go build、go mod等修改和维护 go.mod 文件。</span><br><span class="line">3. 列出所有mod, go list -m all, 手动更新mod缓存, go mod tidy</span><br></pre></td></tr></table></figure>
 
-<h6 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h6><ul>
-<li><p>进入虚拟机，在终端命令<code>systemctl start network.service</code>重启网络服务报以下错误(ens33为有线网卡,不同版本可能不同, 如ens32)</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection &#x27;ens33&#x27; is not available on device ens33 because device is strictly unmanaged</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
 
 </li>
-</ul>
-<h6 id="最佳解决"><a href="#最佳解决" class="headerlink" title="最佳解决"></a>最佳解决</h6><ul>
-<li><p>关闭NetworkManager可以起作用，但不推荐，有线网卡消失是因为网卡未加入托管导致，这里重新纳入托管为最佳解决办法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查看托管状态</span><br><span class="line">nmcli n</span><br><span class="line">显示 disabled 则为本文遇到的问题，如果是 enabled 则可以不用往下看了</span><br><span class="line">开启 托管</span><br><span class="line">nmcli n on</span><br><span class="line">重启网络管理</span><br><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
@@ -332,19 +335,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/centos/" rel="tag"># centos</a>
+              <a href="/tags/go-lang/" rel="tag"># go lang</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/01/12/github/2019-01-12-github-proxy.html" rel="prev" title="github加速">
-                  <i class="fa fa-chevron-left"></i> github加速
+                <a href="/2018/06/21/linux/2018-06-21-supervisor.html" rel="prev" title="centos安装和使用supervisor">
+                  <i class="fa fa-chevron-left"></i> centos安装和使用supervisor
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2019/01/12/github/2019-01-12-github-proxy.html" rel="next" title="github加速">
+                  github加速 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
