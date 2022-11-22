@@ -8,19 +8,18 @@ tags:
 - linux
 ---
 
-### 准备
+##### 准备
   
   - Docker Desktop 
      
      ###### 官网地址 (https://www.docker.com/)
+     
+  - 电脑bios开启支持vt虚拟化
   
-### 电脑bios开启支持vt虚拟化
-
-### win10系统开启wsl(建议)或者hyper-v
-
-   - 搜索栏搜启动或关闭windows功能，设置好后重启电脑
+  - win10系统开启wsl(建议)或者hyper-v, 搜索栏搜启动或关闭windows功能, 设置好后重启电脑
+  
    
-### 启动docker, 配置阿里云镜像加速, 然后重启docker
+##### 启动docker, 配置阿里云镜像加速, 然后重启docker
 
    ```json
         {
@@ -28,10 +27,10 @@ tags:
         }
    ```
 
-### 拉取`centos:8`官方镜像
+##### 创建`centos8`容器
 
-### 创建`centos8`容器
-
+  - 拉取`centos:8`官方镜像
+  
   - `powershell`管理员命令行执行
   
     ```bash
@@ -62,7 +61,7 @@ tags:
     yum makecache
     ```  
 
-### 安装`lnmp`和`node js`环境
+##### 安装`lnmp`和`node js`环境
 
   ```bash
     # 安装oneinstack
@@ -78,7 +77,7 @@ tags:
     source /etc/profile
   ```
 
-### 安装git
+##### 安装git
 
   ```bash
     yum install git
