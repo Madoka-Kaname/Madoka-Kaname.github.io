@@ -19,8 +19,8 @@ tags:
   - 解压缩并安装
   
     ```bash
-    tar -zxvf node-v16.18.0-linux-x64.tar.xz
-    mv node-v16.18.0-linux-x64/* /opt/node
+    tar -xvf node-v16.18.0-linux-x64.tar.xz
+    mv node-v16.18.0-linux-x64/* /usr/local/node
     rm -rf ./node-v16.18.0-linux-x64
     ```
     

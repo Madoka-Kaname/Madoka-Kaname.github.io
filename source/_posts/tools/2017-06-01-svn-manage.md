@@ -9,7 +9,7 @@ tags:
 
 > svn
 
-### 搭建svn服务
+##### 搭建svn服务
   
   - yum安装
   
@@ -24,7 +24,7 @@ tags:
     svnadmin create /home/subversion/yjy_api
     ```
     
-### 配置仓库权限和钩子
+##### 配置仓库权限和钩子
 
    - 修改
   

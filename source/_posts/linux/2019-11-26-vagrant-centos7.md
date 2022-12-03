@@ -23,7 +23,7 @@ tags:
        # 进入box存放目录
        cd ~/vagrant/box
        # 添加box到vagrant
-       vagrant box add CentOS-7-x86_64-Vagrant-2004_01.VirtualBox.box
+       vagrant box add centos7 CentOS-7-x86_64-Vagrant-2004_01.VirtualBox.box
        # 查看box列表
        vagrant box list
        ```
@@ -87,8 +87,8 @@ tags:
          # the path on the host to the actual folder. The second argument is
          # the path on the guest to mount the folder. And the optional third
          # argument is a set of non-required options.
-         config.vm.synced_folder "C:/Users/wanghuan/Code", "/data"
-       
+         config.vm.synced_folder "C:/Users/wanghuan/Code/www", "/data/www", create: true, owner: "www", group: "www"
+
          # Provider-specific configuration so you can fine-tune various
          # backing providers for Vagrant. These expose provider-specific options.
          # Example for VirtualBox:
@@ -147,6 +147,12 @@ tags:
       
       # 进入虚拟机
       vagrant ssh 
+    
+      # 重新应用新配置
+      vagrant provision
+    
+      # 按新配置启动
+      vagrant up --provision
       ```
   - 用户
       ```text
