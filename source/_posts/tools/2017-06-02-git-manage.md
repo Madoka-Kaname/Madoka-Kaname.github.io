@@ -41,6 +41,12 @@ tags:
       
       # 默认推送方式
       git config --global push.default matching
+      
+      # 拉取分支
+      git pull --rebase origin master
+      
+      # 强推分支
+      git push -u origin master
 
 ##### 开发工作流
 
