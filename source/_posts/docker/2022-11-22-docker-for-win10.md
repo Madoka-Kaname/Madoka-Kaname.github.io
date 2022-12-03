@@ -75,6 +75,15 @@ tags:
 
     # 重新加载环境变量
     source /etc/profile
+
+    # nginx
+    systemctl status nginx.service
+
+    # mysql
+    systemctl status mysqld.service
+
+    # php
+    systemctl status php-fpm.service
   ```
 
 ##### 安装git

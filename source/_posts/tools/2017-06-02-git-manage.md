@@ -38,6 +38,9 @@ tags:
       ```
       # 查看提交信息
       git log 
+      
+      # 默认推送方式
+      git config --global push.default matching
 
 ##### 开发工作流
 
