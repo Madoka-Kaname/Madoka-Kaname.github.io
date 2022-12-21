@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -239,6 +239,116 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/06/02/tools/2017-06-02-git-manage.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kaname Madoka">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Madoka">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/06/02/tools/2017-06-02-git-manage.html" class="post-title-link" itemprop="url">git版本管理工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-06-02 12:39:26" itemprop="dateCreated datePublished" datetime="2017-06-02T12:39:26+08:00">2017-06-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-12-03 18:44:07" itemprop="dateModified" datetime="2022-12-03T18:44:07+08:00">2022-12-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>git</p>
+</blockquote>
+<h5 id="搭建git服务"><a href="#搭建git服务" class="headerlink" title="搭建git服务"></a>搭建git服务</h5><h5 id="安装git客户端"><a href="#安装git客户端" class="headerlink" title="安装git客户端"></a>安装git客户端</h5><ul>
+<li>在centos系统  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="git指令"><a href="#git指令" class="headerlink" title="git指令"></a>git指令</h5><ul>
+<li><p>常用</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取远程仓库代码(默认分支)</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:Madoka-Kaname/Madoka-Kaname.github.io.git</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 拉取远程仓库指定分支</span></span><br><span class="line">git checkout -b main origin/main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送远程仓库指定分支</span></span><br><span class="line"><span class="comment"># git push origin main</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 强行推送远程仓库</span></span><br><span class="line"><span class="comment"># git push --force origin main</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 显示所有远程仓库包括url</span></span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<h1 id="查看提交信息"><a href="#查看提交信息" class="headerlink" title="查看提交信息"></a>查看提交信息</h1><p>  git log </p>
+<h1 id="默认推送方式"><a href="#默认推送方式" class="headerlink" title="默认推送方式"></a>默认推送方式</h1><p>  git config –global push.default matching</p>
+<h1 id="拉取分支"><a href="#拉取分支" class="headerlink" title="拉取分支"></a>拉取分支</h1><p>  git pull –rebase origin master</p>
+<h1 id="强推分支"><a href="#强推分支" class="headerlink" title="强推分支"></a>强推分支</h1><p>  git push -u origin master</p>
+</li>
+</ul>
+<h5 id="开发工作流"><a href="#开发工作流" class="headerlink" title="开发工作流"></a>开发工作流</h5><ul>
+<li><p>merge方式</p>
+<p>优点:方便管理, 安全性高, 可追溯, 适合小团队<br>缺点:步骤繁琐, 结构复杂, 过多的合并线, 不易代码审查</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 合并master到feature分支</span></span><br><span class="line">git checkout feature</span><br><span class="line">git merge master </span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">git merge feature master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rebase方式</p>
+<p>优点:结构清晰, 方便代码审查, 适合大团队<br>缺点:需要合理管理, 不遵守rebase的黄金法则容易丢失了合并提交能够提供的上下文信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把feature分支的提交历史rebase到main分支的提交历史顶端</span></span><br><span class="line">git checkout feature</span><br><span class="line">git rebase main</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 可交互式rebase</span></span><br><span class="line">git checkout feature</span><br><span class="line">git rebase -i main</span><br><span class="line">  执行以上命令会打开一个文本编辑器，其中内容为分支中需要移动的所有提交列表</span><br><span class="line">pick 33d5b7a Message <span class="keyword">for</span> commit <span class="comment">#1</span></span><br><span class="line">pick 9480b3d Message <span class="keyword">for</span> commit <span class="comment">#2</span></span><br><span class="line">pick 5c67e61 Message <span class="keyword">for</span> commit <span class="comment">#3</span></span><br><span class="line">  使用fixup命令替代pick来把两次提交压缩在一起</span><br><span class="line">pick 33d5b7a Message <span class="keyword">for</span> commit <span class="comment">#1</span></span><br><span class="line">fixup 9480b3d Message <span class="keyword">for</span> commit <span class="comment">#2</span></span><br><span class="line">pick 5c67e61 Message <span class="keyword">for</span> commit <span class="comment">#3</span></span><br><span class="line">  保存并关闭这个文件之后，Git会根据你的调改结果执行rebase操作</span><br><span class="line">    </span><br><span class="line"><span class="comment"># rebase操作黄金法则:永远不要在公共分支上使用它</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/36509119/answer/2423381574">git工作流</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
