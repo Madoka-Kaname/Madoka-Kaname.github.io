@@ -40,7 +40,7 @@ tags:
       git log 
       
       # 默认推送方式
-      git config --global push.default matching
+      git config --global push.default simple
       
       # 拉取分支
       git pull --rebase origin master
