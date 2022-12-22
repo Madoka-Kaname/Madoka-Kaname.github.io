@@ -546,7 +546,7 @@
 <li><p>常用</p>
   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取远程仓库代码(默认分支)</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:Madoka-Kaname/Madoka-Kaname.github.io.git</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 拉取远程仓库指定分支</span></span><br><span class="line">git checkout -b main origin/main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送远程仓库指定分支</span></span><br><span class="line"><span class="comment"># git push origin main</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 强行推送远程仓库</span></span><br><span class="line"><span class="comment"># git push --force origin main</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 显示所有远程仓库包括url</span></span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
 <h1 id="查看提交信息"><a href="#查看提交信息" class="headerlink" title="查看提交信息"></a>查看提交信息</h1><p>  git log </p>
-<h1 id="默认推送方式"><a href="#默认推送方式" class="headerlink" title="默认推送方式"></a>默认推送方式</h1><p>  git config –global push.default matching</p>
+<h1 id="默认推送方式"><a href="#默认推送方式" class="headerlink" title="默认推送方式"></a>默认推送方式</h1><p>  git config –global push.default simple</p>
 <h1 id="拉取分支"><a href="#拉取分支" class="headerlink" title="拉取分支"></a>拉取分支</h1><p>  git pull –rebase origin master</p>
 <h1 id="强推分支"><a href="#强推分支" class="headerlink" title="强推分支"></a>强推分支</h1><p>  git push -u origin master</p>
 </li>
@@ -585,12 +585,54 @@
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">设置当前程序的错误报告级别</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>session和cookie区别</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">都是用于跟踪用户的整个会话, SESSION存储在服务器端, COOKIE保存在客户端, SESSION相对来说更安全.</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">都是用于跟踪用户的整个会话, SESSION存储在服务器端, COOKIE保存在客户端, </span><br><span class="line">SESSION相对来说更安全.</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>get和post区别</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">GET是通过URL传递参数的, 只能进行URL编码, GET传送的参数长度也是有限制, 不适合传递敏感数据.</span><br><span class="line">POST是通过REQUEST BODY传递参数, 支持多种编码方式, 对参数长度没有限制, 对传递的参数数据类型没有限制.</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">GET是通过URL传递参数的, 只能进行URL编码, GET传送的参数长度也是有限制, </span><br><span class="line">不适合传递敏感数据.</span><br><span class="line">POST是通过REQUEST BODY传递参数, 支持多种编码方式, 对参数长度没有限制, </span><br><span class="line">对传递的参数数据类型没有限制.</span><br></pre></td></tr></table></figure></li>
 <li><p>include和require区别</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">include加载脚本文件不存在时不会报错, require会报致命错误, 中断程序, 有once后缀的会判断当前载入的脚本文件是否已经载入过, 如果载入了就不再执行.</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">include加载脚本文件不存在时不会报错, require会报致命错误, 中断程序, </span><br><span class="line">有once后缀的会判断当前载入的脚本文件是否已经载入过, 如果载入了就不再执行.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转义字符有哪些</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">addslashes():在预定义的字符(双引号、单引号、反斜杠、NULL)前添加反斜杠的字符串.</span><br><span class="line">strip_tags():会过滤掉NULL, HTML和PHP标签.</span><br><span class="line">htmlspecialchars:转义html内容.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>什么是面向对象, 面向对象的主要特征是什么?</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">面向对象一个编程思想, 把具体事物属性和联系映射为对象.</span><br><span class="line">特征:封装性(无需知道具体怎么实现, 可以重复使用), 继承性: 类于类之间可以继承, </span><br><span class="line">便于增加新功能. 多态性: 继承的类可以复写父类的类型和方法.</span><br></pre></td></tr></table></figure></li>
+<li><p>什么是类, 类的主要特征是什么?</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">具有共性事务的代表.</span><br><span class="line">特征:封装性(无需知道具体怎么实现, 可以重复使用), 继承性: 类于类之间可以继承, </span><br><span class="line">便于增加新功能. 多态性: 继承的类可以复写父类的类型和方法.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设计模式</p>
+<ul>
+<li><p>单例模式: 三私一公, 私有的静态变量, 私有的构造方法, 私有的克隆方法,<br>公有的静态方法. 主要应用场景:数据库连接.</p>
+</li>
+<li><p>工厂模式: 提供一种类, 具有为您创建对象的某些方法, 这样就可以使用工厂类创建对象,<br>而不直接使用new. 主要应用场景: 用来解析路由, 加载对应的控制器文件.</p>
+</li>
+<li><p>注册模式: 注册树模式通过将对象实例注册到一棵全局的对象容器上，需要的时候从容器上<br>拿对应的对象.</p>
+</li>
+<li><p>策略模式: 定义一系列算法, 把它们一个个封装起来, 并且使它们可相互替换.</p>
+</li>
+<li><p>观察者模式:当一个对象状态发生变化时, 依赖它的对象全部会收到通知, 并自动更新.<br>主要应用场景:模型监听.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="框架部分"><a href="#框架部分" class="headerlink" title="框架部分"></a>框架部分</h5><ul>
+<li><p>laravel生命周期</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">入口文件public/index.php文件, 入口文件里是自动加载和bootstrap/app.php启动文件, </span><br><span class="line">启动文件返回一个应用容器实例, 根据请求类型, 应用容器创建请求核心, 入口文件里是生成HTTP请求核心,</span><br><span class="line">生成http kernel时候会引导配置异常处理、配置日志、中间件、加载服务提供者等, 其中服务提供者包含</span><br><span class="line">路由、验证、数据库、队列等。请求核心并返回响应结果并调用send方法发送给客户端, 最后容器会结束这次请求和响应。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动加载怎么去实现</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">魔术方法__autoload()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>composer的功能和实现</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">composer处理包的管理和依赖的工具.</span><br><span class="line">通过使用配置文件composer.json文件完成依赖管理, vendor/autoload.php自动加载.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mvc</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Model模型层:数据库交互</span><br><span class="line">View视图层:渲染数据到页面</span><br><span class="line">Controller控制器层:处理用户交互和处理逻辑, 沟通模型和视图.</span><br><span class="line">优点:低耦合, 重用性高, 容易维护</span><br><span class="line">缺点:增加了结构复杂度, 控制器和视图联系密切        </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖注入</p>
+<pre><code class="text">
+d```
+</code></pre>
+</li>
 </ul>
 ]]></content>
       <categories>
